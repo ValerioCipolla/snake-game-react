@@ -1,0 +1,7 @@
+.snake-part {
+  position: absolute;
+  background-color: black;
+  color: black;
+  width: 10px;
+  height: 10px;
+}
