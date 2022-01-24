@@ -1,13 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import Snake from "../Snake";
 import "./app.css";
 
 const Board = () => {
-
-
   return (
     <div id="game-board" className="game-board">
-      <Snake/>
+      <Snake />
     </div>
   );
 };

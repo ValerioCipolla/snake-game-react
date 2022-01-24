@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SnakePart from "../SnakePart";
 import { nanoid } from "nanoid";
 
@@ -10,14 +10,15 @@ const Snake = () => {
     { top: 0, left: 30 },
   ]);
 
-  // setInterval(snakeMove, 1000);
-
-  // function snakeMove() {
-  //   let newSnakeArray = snakeArray.map(function (item) {
-  //     return { top: item.top, left: (item.left += 10) };
-  //   });
-  //   setSnakeArray(newSnakeArray);
-  // }
+  useEffect(() => {
+    function snakeMove() {
+      let newSnakeArray = snakeArray.map(function (item) {
+        return { top: item.top, left: (item.left += 10) };
+      });
+      setSnakeArray(newSnakeArray);
+    }
+    setTimeout(snakeMove, 500);
+  }, [snakeArray]);
 
   return (
     <div>
