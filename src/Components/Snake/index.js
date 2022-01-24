@@ -21,13 +21,17 @@ const Snake = () => {
   }, []);
 
   useEffect(() => {
-    function snakeMove() {
-      let newSnakeArray = snakeArray.map(function (item) {
-        return { top: item.top, left: (item.left += 10) };
-      });
+    function snakeMoveRight() {
+      let newSnakeArray = [
+        ...snakeArray.slice(1),
+        {
+          top: snakeArray[0].top,
+          left: snakeArray[0].left + snakeArray.length * 10,
+        },
+      ];
       setSnakeArray(newSnakeArray);
     }
-    setTimeout(snakeMove, 500);
+    setTimeout(snakeMoveRight, 500);
   }, [snakeArray]);
 
   return (
