@@ -3,7 +3,7 @@ import SnakePart from "../SnakePart";
 import { nanoid } from "nanoid";
 
 const Snake = () => {
-  const [direction, setDirection] = useState("RIGHT");
+  const [direction, setDirection] = useState("right");
 
   const [snakeArray, setSnakeArray] = useState([
     { top: 0, left: 0 },
@@ -13,11 +13,18 @@ const Snake = () => {
   ]);
 
   useEffect(() => {
-    function changeDirection(e) {
-      console.log(e.keyCode);
-    }
-
-    window.addEventListener("keydown", changeDirection);
+    window.addEventListener("keydown", function (e) {
+      console.log(e.key);
+      if (e.key === "ArrowLeft") {
+        setDirection("left");
+      } else if (e.key === "ArrowUp") {
+        setDirection("up");
+      } else if (e.key === "ArrowRight") {
+        setDirection("right");
+      } else if (e.key === "ArrowDown") {
+        setDirection("down");
+      }
+    });
   }, []);
 
   useEffect(() => {
