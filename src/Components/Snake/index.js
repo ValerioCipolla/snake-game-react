@@ -34,16 +34,16 @@ function reducer(state, action) {
 
 const Snake = () => {
   const [state, dispatch] = useReducer(reducer, { direction: "right" });
-
+  const [isDead, setIsDead] = useState(false);
   const [snakeArray, setSnakeArray] = useState([
     { top: 0, left: 0 },
     { top: 0, left: 10 },
     { top: 0, left: 20 },
     { top: 0, left: 30 },
+    { top: 0, left: 40 },
   ]);
 
   function changeDirection(e) {
-    console.log(e.key);
     if (e.key === "ArrowLeft" || e.key === "a" || e.key === "A") {
       dispatch({
         type: "change-direction-left",
@@ -72,6 +72,24 @@ const Snake = () => {
   }, []);
 
   useEffect(() => {
+    function isOffBoard() {
+      if (head.top < 0 || head.top > 400 || head.left < 0 || head.left > 400) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    function hasCrashed() {}
+    let head = snakeArray[snakeArray.length - 1];
+    if (isOffBoard()) {
+      setIsDead(true);
+    }
+  }, [snakeArray]);
+
+  useEffect(() => {
+    if (isDead) {
+      return;
+    }
     function snakeMove() {
       let head = snakeArray[snakeArray.length - 1];
       if (state.direction === "right") {
@@ -107,7 +125,7 @@ const Snake = () => {
     return () => {
       clearTimeout(timer);
     };
-  }, [snakeArray, state.direction]);
+  }, [snakeArray, state.direction, isDead]);
 
   return (
     <div>
