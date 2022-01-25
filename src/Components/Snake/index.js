@@ -43,22 +43,23 @@ const Snake = () => {
   ]);
 
   function changeDirection(e) {
-    if (e.key === "ArrowLeft") {
+    console.log(e.key);
+    if (e.key === "ArrowLeft" || e.key === "a" || e.key === "A") {
       dispatch({
         type: "change-direction-left",
         payload: { direction: "left" },
       });
-    } else if (e.key === "ArrowUp") {
+    } else if (e.key === "ArrowUp" || e.key === "w" || e.key === "W") {
       dispatch({
         type: "change-direction-up",
         payload: { direction: "up" },
       });
-    } else if (e.key === "ArrowRight") {
+    } else if (e.key === "ArrowRight" || e.key === "d" || e.key === "D") {
       dispatch({
         type: "change-direction-right",
         payload: { direction: "right" },
       });
-    } else if (e.key === "ArrowDown") {
+    } else if (e.key === "ArrowDown" || e.key === "s" || e.key === "S") {
       dispatch({
         type: "change-direction-down",
         payload: { direction: "down" },
