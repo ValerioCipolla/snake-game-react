@@ -86,11 +86,25 @@ const Snake = () => {
         return true;
       }
     }
+
+    function growSnake(tail, snakeArray, direction) {
+      if (direction === "right") {
+        return [{ top: tail.top, left: tail.left - 10 }, ...snakeArray];
+      } else if (direction === "down") {
+        return [{ top: tail.top - 10, left: tail.left }, ...snakeArray];
+      } else if (direction === "left") {
+        return [{ top: tail.top, left: tail.left + 10 }, ...snakeArray];
+      } else if (direction === "up") {
+        return [{ top: tail.top + 10, left: tail.left }, ...snakeArray];
+      }
+    }
+
     let tail = snakeArray[0];
     if (hasEaten(tail, food)) {
       setFood(generateFood());
+      setSnakeArray(growSnake(tail, snakeArray, state.direction));
     }
-  }, [snakeArray]);
+  }, [snakeArray, food, state.direction]);
 
   useEffect(() => {
     function isOffBoard(head) {
