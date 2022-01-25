@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useReducer } from "react";
 import SnakePart from "../SnakePart";
 import { nanoid } from "nanoid";
+import Food from "../Food";
 
 function reducer(state, action) {
   if (action.type === "change-direction-left") {
@@ -42,6 +43,14 @@ const Snake = () => {
     { top: 0, left: 30 },
     { top: 0, left: 40 },
   ]);
+  const [food, setFood] = useState(generateFood());
+
+  function generateFood() {
+    return {
+      top: Math.floor(Math.random() * 40) * 10,
+      left: Math.floor(Math.random() * 40) * 10,
+    };
+  }
 
   function changeDirection(e) {
     if (e.key === "ArrowLeft" || e.key === "a" || e.key === "A") {
@@ -70,6 +79,18 @@ const Snake = () => {
   useEffect(() => {
     window.addEventListener("keydown", (e) => changeDirection(e));
   }, []);
+
+  useEffect(() => {
+    function hasEaten(tail, food) {
+      if (tail.top === food.top && tail.left === food.left) {
+        return true;
+      }
+    }
+    let tail = snakeArray[0];
+    if (hasEaten(tail, food)) {
+      setFood(generateFood());
+    }
+  }, [snakeArray]);
 
   useEffect(() => {
     function isOffBoard(head) {
@@ -147,11 +168,14 @@ const Snake = () => {
   }, [snakeArray, state.direction, isDead]);
 
   return (
-    <div>
-      {snakeArray.map((coord) => (
-        <SnakePart key={nanoid()} coords={coord} />
-      ))}
-    </div>
+    <>
+      <div>
+        {snakeArray.map((coord) => (
+          <SnakePart key={nanoid()} coords={coord} />
+        ))}
+      </div>
+      <Food coords={food} />
+    </>
   );
 };
 
