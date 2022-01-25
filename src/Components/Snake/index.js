@@ -72,18 +72,39 @@ const Snake = () => {
   }, []);
 
   useEffect(() => {
-    function snakeMoveRight() {
-      let newSnakeArray = [
-        ...snakeArray.slice(1),
-        {
-          top: snakeArray[0].top,
-          left: snakeArray[0].left + snakeArray.length * 10,
-        },
-      ];
-      setSnakeArray(newSnakeArray);
+    function snakeMove() {
+      let head = snakeArray[snakeArray.length - 1];
+      if (state.direction === "right") {
+        let newSnakeArray = [
+          ...snakeArray.slice(1),
+          {
+            top: head.top,
+            left: head.left + 10,
+          },
+        ];
+        setSnakeArray(newSnakeArray);
+      } else if (state.direction === "down") {
+        let newSnakeArray = [
+          ...snakeArray.slice(1),
+          { top: head.top + 10, left: head.left },
+        ];
+        setSnakeArray(newSnakeArray);
+      } else if (state.direction === "left") {
+        let newSnakeArray = [
+          ...snakeArray.slice(1),
+          { top: head.top, left: head.left - 10 },
+        ];
+        setSnakeArray(newSnakeArray);
+      } else if (state.direction === "up") {
+        let newSnakeArray = [
+          ...snakeArray.slice(1),
+          { top: head.top - 10, left: head.left },
+        ];
+        setSnakeArray(newSnakeArray);
+      }
     }
-    setTimeout(snakeMoveRight, 500);
-  }, [snakeArray]);
+    setTimeout(snakeMove, 500);
+  }, [snakeArray, state.direction]);
 
   return (
     <div>
