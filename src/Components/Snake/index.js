@@ -103,7 +103,10 @@ const Snake = () => {
         setSnakeArray(newSnakeArray);
       }
     }
-    setTimeout(snakeMove, 500);
+    let timer = setTimeout(snakeMove, 500);
+    return () => {
+      clearTimeout(timer);
+    };
   }, [snakeArray, state.direction]);
 
   return (
