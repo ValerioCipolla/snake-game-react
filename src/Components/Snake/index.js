@@ -72,16 +72,35 @@ const Snake = () => {
   }, []);
 
   useEffect(() => {
-    function isOffBoard() {
-      if (head.top < 0 || head.top > 400 || head.left < 0 || head.left > 400) {
+    function isOffBoard(head) {
+      if (
+        head.top < 0 ||
+        head.top >= 400 ||
+        head.left < 0 ||
+        head.left >= 400
+      ) {
         return true;
       } else {
         return false;
       }
     }
-    function hasCrashed() {}
+    function hasCrashed(head, snakeArray) {
+      for (let i = 0; i < snakeArray.length - 1; i++) {
+        if (
+          head.top === snakeArray[i].top &&
+          head.left === snakeArray[i].left
+        ) {
+          return true;
+        }
+      }
+      return false;
+    }
+
     let head = snakeArray[snakeArray.length - 1];
-    if (isOffBoard()) {
+    if (isOffBoard(head)) {
+      setIsDead(true);
+    }
+    if (hasCrashed(head, snakeArray)) {
       setIsDead(true);
     }
   }, [snakeArray]);
@@ -121,7 +140,7 @@ const Snake = () => {
         setSnakeArray(newSnakeArray);
       }
     }
-    let timer = setTimeout(snakeMove, 500);
+    let timer = setTimeout(snakeMove, 100);
     return () => {
       clearTimeout(timer);
     };
