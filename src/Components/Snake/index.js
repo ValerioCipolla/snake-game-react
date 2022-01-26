@@ -180,7 +180,7 @@ const Snake = ({ setScore, speed, score }) => {
     if (isDead) {
       return;
     } else {
-      let timer = setTimeout(snakeMove, 200 / speed);
+      let timer = setTimeout(snakeMove, 100 / speed);
       return () => {
         clearTimeout(timer);
       };

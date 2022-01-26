@@ -12,11 +12,19 @@ const Board = ({ setScore, score }) => {
     } else if (score >= 10) {
       setSpeed(2);
     } else if (score >= 15) {
-      setSpeed(2.5);
-    } else if (score >= 20) {
       setSpeed(3);
+    } else if (score >= 20) {
+      setSpeed(5);
     } else if (score >= 25) {
-      setSpeed(4);
+      setSpeed(7.5);
+    } else if (score >= 30) {
+      setSpeed(10);
+    } else if (score >= 40) {
+      setSpeed(20);
+    } else if (score >= 45) {
+      setSpeed(50);
+    } else if (score >= 50) {
+      setSpeed(100);
     }
   }, [score]);
 
