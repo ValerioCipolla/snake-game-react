@@ -81,8 +81,8 @@ const Snake = () => {
   }, []);
 
   useEffect(() => {
-    function hasEaten(tail, food) {
-      if (tail.top === food.top && tail.left === food.left) {
+    function hasEaten(head, food) {
+      if (head.top === food.top && head.left === food.left) {
         return true;
       }
     }
@@ -98,11 +98,13 @@ const Snake = () => {
         return [{ top: tail.top + 10, left: tail.left }, ...snakeArray];
       }
     }
-
+    let head = snakeArray[snakeArray.length - 1];
     let tail = snakeArray[0];
-    if (hasEaten(tail, food)) {
+    if (hasEaten(head, food)) {
       setFood(generateFood());
       setSnakeArray(growSnake(tail, snakeArray, state.direction));
+    } else {
+      return;
     }
   }, [snakeArray, food, state.direction]);
 
@@ -134,16 +136,14 @@ const Snake = () => {
     let head = snakeArray[snakeArray.length - 1];
     if (isOffBoard(head)) {
       setIsDead(true);
-    }
-    if (hasCrashed(head, snakeArray)) {
+    } else if (hasCrashed(head, snakeArray)) {
       setIsDead(true);
+    } else {
+      return;
     }
   }, [snakeArray]);
 
   useEffect(() => {
-    if (isDead) {
-      return;
-    }
     function snakeMove() {
       let head = snakeArray[snakeArray.length - 1];
       if (state.direction === "right") {
@@ -175,10 +175,15 @@ const Snake = () => {
         setSnakeArray(newSnakeArray);
       }
     }
-    let timer = setTimeout(snakeMove, 100);
-    return () => {
-      clearTimeout(timer);
-    };
+
+    if (isDead) {
+      return;
+    } else {
+      let timer = setTimeout(snakeMove, 100);
+      return () => {
+        clearTimeout(timer);
+      };
+    }
   }, [snakeArray, state.direction, isDead]);
 
   return (
