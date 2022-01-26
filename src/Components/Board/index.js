@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Snake from "../Snake";
 import Intro from "../Intro";
+import GameOver from "../GameOver";
 import "./board.css";
 
 const Board = ({ setScore, score }) => {
@@ -32,13 +33,24 @@ const Board = ({ setScore, score }) => {
   if (stage === "game") {
     return (
       <div id="game-board" className="game-board">
-        <Snake score={score} speed={speed} setScore={setScore} />
+        <Snake
+          score={score}
+          speed={speed}
+          setScore={setScore}
+          setStage={setStage}
+        />
       </div>
     );
   } else if (stage === "intro") {
     return (
       <div id="game-board" className="game-board">
-        <Intro setStage={setStage}/>
+        <Intro setStage={setStage} />
+      </div>
+    );
+  } else if (stage === "game-over") {
+    return (
+      <div id="game-board" className="game-board">
+        <GameOver score={score} />
       </div>
     );
   }

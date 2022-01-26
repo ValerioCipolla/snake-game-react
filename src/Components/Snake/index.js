@@ -33,7 +33,7 @@ function reducer(state, action) {
   }
 }
 
-const Snake = ({ setScore, speed, score }) => {
+const Snake = ({ setScore, speed, score, setStage }) => {
   const [state, dispatch] = useReducer(reducer, { direction: "right" });
   const [isDead, setIsDead] = useState(false);
   const [snakeArray, setSnakeArray] = useState([
@@ -186,6 +186,12 @@ const Snake = ({ setScore, speed, score }) => {
       };
     }
   }, [snakeArray, state.direction, isDead, speed]);
+
+  useEffect(() => {
+    if (isDead) {
+      setStage("game-over")
+    }
+  }, [isDead, setStage])
 
   return (
     <>
