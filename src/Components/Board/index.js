@@ -7,24 +7,24 @@ const Board = ({ setScore, score }) => {
   const [speed, setSpeed] = useState(1);
 
   useEffect(() => {
-    if (score >= 5) {
-      setSpeed(1.5);
-    } else if (score >= 10) {
-      setSpeed(2);
-    } else if (score >= 15) {
-      setSpeed(3);
-    } else if (score >= 20) {
-      setSpeed(5);
-    } else if (score >= 25) {
-      setSpeed(7.5);
-    } else if (score >= 30) {
-      setSpeed(10);
+    if (score >= 50) {
+      setSpeed(50);
     } else if (score >= 40) {
       setSpeed(20);
-    } else if (score >= 45) {
-      setSpeed(50);
-    } else if (score >= 50) {
-      setSpeed(100);
+    } else if (score >= 35) {
+      setSpeed(12);
+    } else if (score >= 30) {
+      setSpeed(10);
+    } else if (score >= 25) {
+      setSpeed(7);
+    } else if (score >= 20) {
+      setSpeed(5);
+    } else if (score >= 15) {
+      setSpeed(3);
+    } else if (score >= 10) {
+      setSpeed(2);
+    } else if (score >= 5) {
+      setSpeed(1.5);
     }
   }, [score]);
 
