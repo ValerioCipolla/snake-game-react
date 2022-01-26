@@ -5,6 +5,7 @@ import "./app.css";
 
 const App = () => {
   const [score, setScore] = useState(0);
+  
   return (
     <>
       <Score score={score} />

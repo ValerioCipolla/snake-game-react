@@ -1,10 +1,11 @@
-import React, { useState } from "react";
-import { useEffect } from "react/cjs/react.development";
+import React, { useState, useEffect } from "react";
 import Snake from "../Snake";
+import Intro from "../Intro";
 import "./board.css";
 
 const Board = ({ setScore, score }) => {
   const [speed, setSpeed] = useState(1);
+  const [stage, setStage] = useState("intro");
 
   useEffect(() => {
     if (score >= 50) {
@@ -28,11 +29,19 @@ const Board = ({ setScore, score }) => {
     }
   }, [score]);
 
-  return (
-    <div id="game-board" className="game-board">
-      <Snake score={score} speed={speed} setScore={setScore} />
-    </div>
-  );
+  if (stage === "game") {
+    return (
+      <div id="game-board" className="game-board">
+        <Snake score={score} speed={speed} setScore={setScore} />
+      </div>
+    );
+  } else if (stage === "intro") {
+    return (
+      <div id="game-board" className="game-board">
+        <Intro setStage={setStage}/>
+      </div>
+    );
+  }
 };
 
 export default Board;
