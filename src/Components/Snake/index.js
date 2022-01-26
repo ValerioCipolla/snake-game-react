@@ -33,7 +33,7 @@ function reducer(state, action) {
   }
 }
 
-const Snake = ({ incrementScore }) => {
+const Snake = ({ setScore, speed, score }) => {
   const [state, dispatch] = useReducer(reducer, { direction: "right" });
   const [isDead, setIsDead] = useState(false);
   const [snakeArray, setSnakeArray] = useState([
@@ -101,13 +101,13 @@ const Snake = ({ incrementScore }) => {
     let head = snakeArray[snakeArray.length - 1];
     let tail = snakeArray[0];
     if (hasEaten(head, food)) {
-      incrementScore({ type: "increment-score" });
+      setScore(score + 1);
       setFood(generateFood());
       setSnakeArray(growSnake(tail, snakeArray, state.direction));
     } else {
       return;
     }
-  }, [snakeArray, food, state.direction, incrementScore]);
+  }, [snakeArray, food, state.direction, setScore, score]);
 
   useEffect(() => {
     function isOffBoard(head) {
@@ -180,12 +180,12 @@ const Snake = ({ incrementScore }) => {
     if (isDead) {
       return;
     } else {
-      let timer = setTimeout(snakeMove, 100);
+      let timer = setTimeout(snakeMove, 200 / speed);
       return () => {
         clearTimeout(timer);
       };
     }
-  }, [snakeArray, state.direction, isDead]);
+  }, [snakeArray, state.direction, isDead, speed]);
 
   return (
     <>
