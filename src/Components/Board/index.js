@@ -4,9 +4,8 @@ import Intro from "../Intro";
 import GameOver from "../GameOver";
 import "./board.css";
 
-const Board = ({ setScore, score }) => {
+const Board = ({ setScore, score, stage, setStage }) => {
   const [speed, setSpeed] = useState(1);
-  const [stage, setStage] = useState("intro");
 
   useEffect(() => {
     if (score >= 50) {
@@ -50,7 +49,7 @@ const Board = ({ setScore, score }) => {
   } else if (stage === "game-over") {
     return (
       <div id="game-board" className="game-board">
-        <GameOver score={score} />
+        <GameOver score={score} setStage={setStage} setScore={setScore} setSpeed={setSpeed}/>
       </div>
     );
   }

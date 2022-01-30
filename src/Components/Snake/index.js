@@ -189,9 +189,9 @@ const Snake = ({ setScore, speed, score, setStage }) => {
 
   useEffect(() => {
     if (isDead) {
-      setStage("game-over")
+      setStage({ type: "finish-game" });
     }
-  }, [isDead, setStage])
+  }, [isDead, setStage]);
 
   return (
     <>
