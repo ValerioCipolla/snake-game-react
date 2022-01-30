@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "../Button";
 import "./gameOver.css";
 
 const GameOver = ({ score, setStage, setScore, setSpeed }) => {
@@ -11,7 +12,7 @@ const GameOver = ({ score, setStage, setScore, setSpeed }) => {
     <div className="game-over">
       <h1> Game Over.</h1>
       <h2> Your score was: {score}</h2>
-      <button onClick={handleClick}>Click to play again</button>
+      <Button handleClick={handleClick} text="PLAY AGAIN" />
     </div>
   );
 };
