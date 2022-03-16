@@ -1,70 +1,19 @@
-# Getting Started with Create React App
+# React Snake Game
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Right after learning React on the SchoolOfCode Bootcamp, I felt like I needed more practice, to really understand how this great library works. I could see its potential, but I didn't really grasped how it worked yet. That is why I decided to embark on a little solo project, to work on during evenings and week-ends: build the famous Snake Game - we all played it on our phones at least once in our life - and I was gonna do it using only React (and a little CSS to make it look better :D). I did NOT follow a tutorial, and I stopped myself from googling 'how to build a snake game with react' - I wanted to struggle, because I strongly believe that is what I needed to become a better software engineer. It's fair to say it was a battle, I had to figure out how to represent a snake on the screen, how to make it move and how to make it change direction. I ended up using an array of squares to create the snake, various timeouts to make it move at regular intervals and event listeners to tell the snake when and how to change directions. I can honestly say 90% of the things I know about React, I learnt them through this project, I had to work out where various states needed to live, when it was necessary to lift state up, how to use useEffect and how to clean up after myself when setting up timeouts and event listeners, how useReducer exactly works and many more things. I really do suggest you try it out by clicking the LIVE SITE button above - it's FUN! Looking at the future: I want to create the back-end for this project, to make it possible for people to enter their score once they finish playing and display a leaderboard to see what the best score is. I also want to create a tutorial where I explain HOW I built the game so other people can learn it with me.
 
-## Available Scripts
+## Install and Run
 
-In the project directory, you can run:
+Clone the repo down down, open it in your favourite Code editor and in your root folder terminal run 
 
-### `npm start`
+``` 
+npm i
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Once all dependencies are installed, execute 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+``` 
+npm start
+```
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+A new window should open in your browser and you will be ready to play.
